@@ -4,10 +4,11 @@ metadata:
   creationTimestamp: null
   labels:
     app: ghost
+    argocd.argoproj.io/instance: ghost
   name: ghost
 spec:
   ports:
-  - port: 80
+  - port: 2368
     protocol: TCP
     targetPort: 2368
   selector:
