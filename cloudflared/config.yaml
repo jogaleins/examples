@@ -1,0 +1,13 @@
+tunnel: 41153904-a673-4ddd-a685-e7f33e2da81e
+credentials-file: /etc/cloudflared/creds/credentials.json
+
+metrics: 0.0.0.0:2000
+
+no-autoupdate: true
+
+ingress:
+  - hostname: '*.pazon.work'
+    service: http://192.168.56.101
+    originRequest:
+      noTLSVerify: true
+  - service: http_status:404
