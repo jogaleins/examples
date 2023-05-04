@@ -12,6 +12,6 @@ spec:
     targetPort: 2368
   selector:
     app: ghost
-  type: LoadBalancer
+  type: NodePort
 status:
   loadBalancer: {}
