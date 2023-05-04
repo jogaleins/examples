@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: phpmyadmin
+  name: phpmyadmin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: phpmyadmin
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: phpmyadmin
+    spec:
+      containers:
+      - image: docker.io/bitnami/phpmyadmin:5.2.1-debian-11-r15
+        name: phpmyadmin
+        env:
+        - name: BITNAMI_DEBUG
+          value: "false"
+        - name: DATABASE_PORT_NUMBER
+          value: "3306"
+        - name: DATABASE_HOST
+        - name: PHPMYADMIN_ALLOW_NO_PASSWORD
+          value: "true"
+        - name: PHPMYADMIN_ALLOW_ARBITRARY_SERVER
+          value: "true"
+        - name: DATABASE_ENABLE_SSL
+          value: "no"
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        - containerPort: 8443
+          name: https
+          protocol: TCP
