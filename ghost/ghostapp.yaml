@@ -26,7 +26,7 @@ spec:
         - name: database__client
           value: mysql
         - name: database__connection__host
-          value: 192.168.56.103
+          value: mariadb.default.svc.cluster.local
         - name: database__connection__user
           value: root
         - name: database__connection__password
