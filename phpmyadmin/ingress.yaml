@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: traefik
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
   name: phpmyadmin
   namespace: default
 spec:
@@ -15,6 +15,6 @@ spec:
           service:
             name: phpmyadmin
             port:
-              number: 8443
+              number: 8080
         path: /
         pathType: Prefix
