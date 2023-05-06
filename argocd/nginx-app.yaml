@@ -1,0 +1,133 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: "2023-05-04T10:36:18Z"
+  generation: 37
+  name: nginx
+  namespace: argocd
+  resourceVersion: "474335"
+  uid: 78360a84-ef68-4a69-a15e-4afe0d00b275
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    directory:
+      include: '*.yaml'
+      jsonnet: {}
+    path: nginx
+    repoURL: https://github.com/jogaleins/examples.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}
+status:
+  health:
+    status: Healthy
+  history:
+  - deployStartedAt: "2023-05-04T10:36:20Z"
+    deployedAt: "2023-05-04T10:36:20Z"
+    id: 0
+    revision: 1ca6694516c9e1ed70b3b1d9f7a14a3b900bfecf
+    source:
+      directory:
+        include: '*.yaml'
+        jsonnet: {}
+      path: nginx
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  operationState:
+    finishedAt: "2023-05-04T10:36:20Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        automated: true
+      retry:
+        limit: 5
+      sync:
+        revision: 1ca6694516c9e1ed70b3b1d9f7a14a3b900bfecf
+    phase: Succeeded
+    startedAt: "2023-05-04T10:36:20Z"
+    syncResult:
+      resources:
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/nginx configured
+        name: nginx
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/nginx configured
+        name: nginx
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: networking.k8s.io
+        hookPhase: Running
+        kind: Ingress
+        message: ingress.networking.k8s.io/nginx configured
+        name: nginx
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      revision: 1ca6694516c9e1ed70b3b1d9f7a14a3b900bfecf
+      source:
+        directory:
+          include: '*.yaml'
+          jsonnet: {}
+        path: nginx
+        repoURL: https://github.com/jogaleins/examples.git
+        targetRevision: HEAD
+  reconciledAt: "2023-05-06T07:57:54Z"
+  resources:
+  - health:
+      status: Healthy
+    kind: Service
+    name: nginx
+    namespace: default
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: nginx
+    namespace: default
+    status: Synced
+    version: v1
+  - group: networking.k8s.io
+    health:
+      status: Healthy
+    kind: Ingress
+    name: nginx
+    namespace: default
+    status: Synced
+    version: v1
+  sourceType: Directory
+  summary:
+    externalURLs:
+    - http://nginx.pazon.work/
+    - http://www.pazon.work/
+    images:
+    - nginx
+  sync:
+    comparedTo:
+      destination:
+        namespace: default
+        server: https://kubernetes.default.svc
+      source:
+        directory:
+          include: '*.yaml'
+          jsonnet: {}
+        path: nginx
+        repoURL: https://github.com/jogaleins/examples.git
+        targetRevision: HEAD
+    revision: 1ca6694516c9e1ed70b3b1d9f7a14a3b900bfecf
+    status: Synced

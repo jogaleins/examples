@@ -1,0 +1,128 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: "2023-05-04T10:00:18Z"
+  generation: 54
+  name: cloudflared
+  namespace: argocd
+  resourceVersion: "475126"
+  uid: b8b803ef-84fe-4abf-860b-8a1718cf8e5c
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    directory:
+      exclude: config.yaml
+      include: '*.yaml'
+      jsonnet: {}
+    path: cloudflared
+    repoURL: https://github.com/jogaleins/examples.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}
+status:
+  health:
+    status: Healthy
+  history:
+  - deployStartedAt: "2023-05-04T10:00:19Z"
+    deployedAt: "2023-05-04T10:00:19Z"
+    id: 0
+    revision: 773cc1f205ba4f2348d67889cbc2e0ce3c979b74
+    source:
+      directory:
+        exclude: config.yaml
+        include: '*.yaml'
+        jsonnet: {}
+      path: cloudflared
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  operationState:
+    finishedAt: "2023-05-04T10:00:19Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        automated: true
+      retry:
+        limit: 5
+      sync:
+        revision: 773cc1f205ba4f2348d67889cbc2e0ce3c979b74
+    phase: Succeeded
+    startedAt: "2023-05-04T10:00:19Z"
+    syncResult:
+      resources:
+      - group: ""
+        hookPhase: Running
+        kind: Namespace
+        message: namespace/cloudflared-argo created
+        name: cloudflared-argo
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/cloudflared created
+        name: cloudflared
+        namespace: cloudflared-argo
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: DaemonSet
+        message: daemonset.apps/cloudflared configured
+        name: cloudflared
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      revision: 773cc1f205ba4f2348d67889cbc2e0ce3c979b74
+      source:
+        directory:
+          exclude: config.yaml
+          include: '*.yaml'
+          jsonnet: {}
+        path: cloudflared
+        repoURL: https://github.com/jogaleins/examples.git
+        targetRevision: HEAD
+  reconciledAt: "2023-05-06T08:00:54Z"
+  resources:
+  - kind: ConfigMap
+    name: cloudflared
+    namespace: cloudflared-argo
+    status: Synced
+    version: v1
+  - kind: Namespace
+    name: cloudflared-argo
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: DaemonSet
+    name: cloudflared
+    namespace: default
+    status: Synced
+    version: v1
+  sourceType: Directory
+  summary:
+    images:
+    - cloudflare/cloudflared:2022.3.0
+  sync:
+    comparedTo:
+      destination:
+        namespace: default
+        server: https://kubernetes.default.svc
+      source:
+        directory:
+          exclude: config.yaml
+          include: '*.yaml'
+          jsonnet: {}
+        path: cloudflared
+        repoURL: https://github.com/jogaleins/examples.git
+        targetRevision: HEAD
+    revision: 1ca6694516c9e1ed70b3b1d9f7a14a3b900bfecf
+    status: Synced

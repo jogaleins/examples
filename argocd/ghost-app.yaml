@@ -1,0 +1,214 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: "2023-05-04T02:09:43Z"
+  generation: 257
+  name: ghost
+  namespace: argocd
+  resourceVersion: "475127"
+  uid: 866df7f7-49c1-430c-bb70-e6343bb761f7
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    directory:
+      include: '*.yaml'
+      jsonnet: {}
+      recurse: true
+    path: ghost
+    repoURL: https://github.com/jogaleins/examples.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}
+status:
+  health:
+    status: Healthy
+  history:
+  - deployStartedAt: "2023-05-04T02:20:08Z"
+    deployedAt: "2023-05-04T02:22:39Z"
+    id: 0
+    revision: 02c735fe4cad66242eae1d737d7fdf0fe6fe8897
+    source:
+      directory:
+        include: '*.yaml'
+        jsonnet: {}
+        recurse: true
+      path: ghost
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  - deployStartedAt: "2023-05-04T02:22:39Z"
+    deployedAt: "2023-05-04T02:22:40Z"
+    id: 1
+    revision: 8305148496cf7ca9fbb9cd54d02a21e63c9ea21a
+    source:
+      directory:
+        include: '*.yaml'
+        jsonnet: {}
+        recurse: true
+      path: ghost
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  operationState:
+    finishedAt: "2023-05-04T02:22:40Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        automated: true
+      retry:
+        limit: 5
+      sync:
+        revision: 8305148496cf7ca9fbb9cd54d02a21e63c9ea21a
+    phase: Succeeded
+    startedAt: "2023-05-04T02:22:39Z"
+    syncResult:
+      resources:
+      - group: ""
+        hookPhase: Running
+        kind: PersistentVolumeClaim
+        message: persistentvolumeclaim/db unchanged
+        name: db
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: PersistentVolumeClaim
+        message: persistentvolumeclaim/ghost-app unchanged
+        name: ghost-app
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/ghost configured
+        name: ghost
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/mariadb configured
+        name: mariadb
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/ghost configured
+        name: ghost
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/mariadb configured
+        name: mariadb
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: networking.k8s.io
+        hookPhase: Running
+        kind: Ingress
+        message: ingress.networking.k8s.io/ghost unchanged
+        name: ghost
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      revision: 8305148496cf7ca9fbb9cd54d02a21e63c9ea21a
+      source:
+        directory:
+          include: '*.yaml'
+          jsonnet: {}
+          recurse: true
+        path: ghost
+        repoURL: https://github.com/jogaleins/examples.git
+        targetRevision: HEAD
+  reconciledAt: "2023-05-06T08:00:54Z"
+  resources:
+  - health:
+      status: Healthy
+    kind: PersistentVolumeClaim
+    name: db
+    namespace: default
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: PersistentVolumeClaim
+    name: ghost-app
+    namespace: default
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: ghost
+    namespace: default
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: mariadb
+    namespace: default
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: ghost
+    namespace: default
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: mariadb
+    namespace: default
+    status: Synced
+    version: v1
+  - group: networking.k8s.io
+    health:
+      status: Healthy
+    kind: Ingress
+    name: ghost
+    namespace: default
+    status: Synced
+    version: v1
+  sourceType: Directory
+  summary:
+    externalURLs:
+    - http://ghost.pazon.work/
+    images:
+    - ghost:5.45.1-alpine
+    - mariadb:10.7.8
+  sync:
+    comparedTo:
+      destination:
+        namespace: default
+        server: https://kubernetes.default.svc
+      source:
+        directory:
+          include: '*.yaml'
+          jsonnet: {}
+          recurse: true
+        path: ghost
+        repoURL: https://github.com/jogaleins/examples.git
+        targetRevision: HEAD
+    revision: 1ca6694516c9e1ed70b3b1d9f7a14a3b900bfecf
+    status: Synced

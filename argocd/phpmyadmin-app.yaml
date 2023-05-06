@@ -1,0 +1,237 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: "2023-05-04T02:41:14Z"
+  generation: 354
+  name: phpmyadmin
+  namespace: argocd
+  resourceVersion: "475123"
+  uid: 8fc66c6b-1be2-47e5-89f2-621356d0065c
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    directory:
+      include: '*.yaml'
+      jsonnet: {}
+      recurse: true
+    path: phpmyadmin
+    repoURL: https://github.com/jogaleins/examples.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+status:
+  health:
+    status: Healthy
+  history:
+  - deployStartedAt: "2023-05-04T04:20:22Z"
+    deployedAt: "2023-05-04T04:20:23Z"
+    id: 7
+    revision: 75728edfcefd461e46fc82d6ea7982c577f04875
+    source:
+      directory:
+        include: '*.yaml'
+        jsonnet: {}
+        recurse: true
+      path: phpmyadmin
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  - deployStartedAt: "2023-05-04T04:21:07Z"
+    deployedAt: "2023-05-04T04:21:08Z"
+    id: 8
+    revision: 73bfea143c52d87970301cbf440aac5a62f91adc
+    source:
+      directory:
+        include: '*.yaml'
+        jsonnet: {}
+        recurse: true
+      path: phpmyadmin
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  - deployStartedAt: "2023-05-04T04:35:46Z"
+    deployedAt: "2023-05-04T04:35:47Z"
+    id: 9
+    revision: 7e091769dbdb5a2ddc02b6c6bdab0b89fccc1a73
+    source:
+      directory:
+        include: '*.yaml'
+        jsonnet: {}
+        recurse: true
+      path: phpmyadmin
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  - deployStartedAt: "2023-05-04T04:37:46Z"
+    deployedAt: "2023-05-04T04:37:48Z"
+    id: 10
+    revision: 43e56205f5140718abed3bdfa6441a9b389bbb7c
+    source:
+      directory:
+        include: '*.yaml'
+        jsonnet: {}
+        recurse: true
+      path: phpmyadmin
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  - deployStartedAt: "2023-05-04T04:37:48Z"
+    deployedAt: "2023-05-04T04:37:48Z"
+    id: 11
+    revision: 7e091769dbdb5a2ddc02b6c6bdab0b89fccc1a73
+    source:
+      directory:
+        include: '*.yaml'
+        jsonnet: {}
+        recurse: true
+      path: phpmyadmin
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  - deployStartedAt: "2023-05-04T04:38:31Z"
+    deployedAt: "2023-05-04T04:38:32Z"
+    id: 12
+    revision: 7e091769dbdb5a2ddc02b6c6bdab0b89fccc1a73
+    source:
+      directory:
+        include: '*.yaml'
+        jsonnet: {}
+        recurse: true
+      path: phpmyadmin
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  - deployStartedAt: "2023-05-04T04:39:19Z"
+    deployedAt: "2023-05-04T04:39:19Z"
+    id: 13
+    revision: 43e56205f5140718abed3bdfa6441a9b389bbb7c
+    source:
+      directory:
+        include: '*.yaml'
+        jsonnet: {}
+        recurse: true
+      path: phpmyadmin
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  - deployStartedAt: "2023-05-04T04:43:24Z"
+    deployedAt: "2023-05-04T04:43:26Z"
+    id: 14
+    revision: dc5380bc675967bacddad50d756e8b70475f5785
+    source:
+      directory:
+        include: '*.yaml'
+        jsonnet: {}
+        recurse: true
+      path: phpmyadmin
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  - deployStartedAt: "2023-05-04T04:47:08Z"
+    deployedAt: "2023-05-04T04:47:09Z"
+    id: 15
+    revision: a85d7904519017d240e8c3bc3f266b0564a93229
+    source:
+      directory:
+        include: '*.yaml'
+        jsonnet: {}
+        recurse: true
+      path: phpmyadmin
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  - deployStartedAt: "2023-05-04T04:56:16Z"
+    deployedAt: "2023-05-04T04:56:16Z"
+    id: 16
+    revision: 6cb237c3f75ce5164db88b219a7f904494d13d1c
+    source:
+      directory:
+        include: '*.yaml'
+        jsonnet: {}
+        recurse: true
+      path: phpmyadmin
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  operationState:
+    finishedAt: "2023-05-04T04:56:16Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        automated: true
+      retry:
+        limit: 5
+      sync:
+        prune: true
+        revision: 6cb237c3f75ce5164db88b219a7f904494d13d1c
+    phase: Succeeded
+    startedAt: "2023-05-04T04:56:16Z"
+    syncResult:
+      resources:
+      - group: networking.k8s.io
+        hookPhase: Succeeded
+        kind: Ingress
+        message: pruned
+        name: phpmyadmin
+        namespace: default
+        status: Pruned
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/phpmyadmin configured
+        name: phpmyadmin
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/phpmyadmin configured
+        name: phpmyadmin
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      revision: 6cb237c3f75ce5164db88b219a7f904494d13d1c
+      source:
+        directory:
+          include: '*.yaml'
+          jsonnet: {}
+          recurse: true
+        path: phpmyadmin
+        repoURL: https://github.com/jogaleins/examples.git
+        targetRevision: HEAD
+  reconciledAt: "2023-05-06T08:00:54Z"
+  resources:
+  - health:
+      status: Healthy
+    kind: Service
+    name: phpmyadmin
+    namespace: default
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: phpmyadmin
+    namespace: default
+    status: Synced
+    version: v1
+  sourceType: Directory
+  summary:
+    images:
+    - docker.io/bitnami/phpmyadmin:5.2.1-debian-11-r15
+  sync:
+    comparedTo:
+      destination:
+        namespace: default
+        server: https://kubernetes.default.svc
+      source:
+        directory:
+          include: '*.yaml'
+          jsonnet: {}
+          recurse: true
+        path: phpmyadmin
+        repoURL: https://github.com/jogaleins/examples.git
+        targetRevision: HEAD
+    revision: 1ca6694516c9e1ed70b3b1d9f7a14a3b900bfecf
+    status: Synced
