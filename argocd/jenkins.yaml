@@ -1,0 +1,205 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: "2023-05-22T08:06:04Z"
+  generation: 14
+  name: jenkins
+  namespace: argocd
+  resourceVersion: "56896"
+  uid: 4db54509-f05b-4a8f-85e9-d6b293d73eb0
+spec:
+  destination:
+    namespace: devops-tools
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    directory:
+      include: '*.yaml'
+      jsonnet: {}
+    path: jenkins
+    repoURL: https://github.com/jogaleins/examples.git
+    targetRevision: HEAD
+status:
+  health:
+    status: Healthy
+  history:
+  - deployStartedAt: "2023-05-22T08:06:55Z"
+    deployedAt: "2023-05-22T08:06:56Z"
+    id: 0
+    revision: f406d4471af87d19bc1cb428381a5c5076f87722
+    source:
+      directory:
+        include: '*.yaml'
+        jsonnet: {}
+      path: jenkins
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  operationState:
+    finishedAt: "2023-05-22T08:06:56Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        username: admin
+      retry: {}
+      sync:
+        revision: f406d4471af87d19bc1cb428381a5c5076f87722
+        syncStrategy:
+          hook: {}
+    phase: Succeeded
+    startedAt: "2023-05-22T08:06:55Z"
+    syncResult:
+      resources:
+      - group: ""
+        hookPhase: Running
+        kind: Namespace
+        message: namespace/devops-tools configured
+        name: devops-tools
+        namespace: devops-tools
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ServiceAccount
+        message: serviceaccount/jenkins-admin configured
+        name: jenkins-admin
+        namespace: devops-tools
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: PersistentVolumeClaim
+        message: persistentvolumeclaim/jenkins-pv-claim configured
+        name: jenkins-pv-claim
+        namespace: devops-tools
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: ClusterRole
+        message: clusterrole.rbac.authorization.k8s.io/jenkins-admin reconciled. reconciliation
+          required update. clusterrole.rbac.authorization.k8s.io/jenkins-admin configured
+        name: jenkins-admin
+        namespace: devops-tools
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: ClusterRoleBinding
+        message: clusterrolebinding.rbac.authorization.k8s.io/jenkins-admin reconciled.
+          reconciliation required update. clusterrolebinding.rbac.authorization.k8s.io/jenkins-admin
+          configured
+        name: jenkins-admin
+        namespace: devops-tools
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/jenkins-service configured
+        name: jenkins-service
+        namespace: devops-tools
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/jenkins configured
+        name: jenkins
+        namespace: devops-tools
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: networking.k8s.io
+        hookPhase: Running
+        kind: Ingress
+        message: ingress.networking.k8s.io/jenkins-service configured
+        name: jenkins-service
+        namespace: devops-tools
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      revision: f406d4471af87d19bc1cb428381a5c5076f87722
+      source:
+        directory:
+          include: '*.yaml'
+          jsonnet: {}
+        path: jenkins
+        repoURL: https://github.com/jogaleins/examples.git
+        targetRevision: HEAD
+  reconciledAt: "2023-05-22T08:06:57Z"
+  resources:
+  - kind: Namespace
+    name: devops-tools
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: PersistentVolumeClaim
+    name: jenkins-pv-claim
+    namespace: devops-tools
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: jenkins-service
+    namespace: devops-tools
+    status: Synced
+    version: v1
+  - kind: ServiceAccount
+    name: jenkins-admin
+    namespace: devops-tools
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: jenkins
+    namespace: devops-tools
+    status: Synced
+    version: v1
+  - group: networking.k8s.io
+    health:
+      status: Healthy
+    kind: Ingress
+    name: jenkins-service
+    namespace: devops-tools
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: jenkins-admin
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRoleBinding
+    name: jenkins-admin
+    status: Synced
+    version: v1
+  sourceType: Directory
+  summary:
+    externalURLs:
+    - http://jenkins.pazon.work/
+    images:
+    - jenkins/jenkins:lts
+  sync:
+    comparedTo:
+      destination:
+        namespace: devops-tools
+        server: https://kubernetes.default.svc
+      source:
+        directory:
+          include: '*.yaml'
+          jsonnet: {}
+        path: jenkins
+        repoURL: https://github.com/jogaleins/examples.git
+        targetRevision: HEAD
+    revision: f406d4471af87d19bc1cb428381a5c5076f87722
+    status: Synced
