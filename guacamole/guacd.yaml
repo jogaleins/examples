@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: guacd
+  namespace: guacamole
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: guacd
+  template:
+    metadata:
+      labels:
+        app: guacd
+    spec:
+      containers:
+      - name: guacd
+        image: linuxserver/guacd:latest
+        volumeMounts:
+        - name: guacd-vol
+          mountPath: /drive
+          subPath: data/drive
+        - name: guacd-vol
+          mountPath: /record
+          subPath: data/record
+      volumes:
+      - name: guacd-vol
+        persistentVolumeClaim:
+          claimName: guacd-pvc
