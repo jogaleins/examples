@@ -1,0 +1,275 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: "2023-05-24T02:13:27Z"
+  generation: 9
+  name: guacamole
+  namespace: argocd
+  resourceVersion: "133629"
+  uid: 66b842a6-8ae7-4edd-ae82-b62062e98987
+spec:
+  destination:
+    namespace: guacamole
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    directory:
+      include: '*.yaml'
+      jsonnet: {}
+    path: guacamole
+    repoURL: https://github.com/jogaleins/examples.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}
+status:
+  health:
+    status: Healthy
+  history:
+  - deployStartedAt: "2023-05-24T02:13:29Z"
+    deployedAt: "2023-05-24T02:13:30Z"
+    id: 0
+    revision: 2fc189cdec3cc3e8f6a74f8558869c917e334366
+    source:
+      directory:
+        include: '*.yaml'
+        jsonnet: {}
+      path: guacamole
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  operationState:
+    finishedAt: "2023-05-24T02:13:30Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        automated: true
+      retry:
+        limit: 5
+      sync:
+        revision: 2fc189cdec3cc3e8f6a74f8558869c917e334366
+    phase: Succeeded
+    startedAt: "2023-05-24T02:13:29Z"
+    syncResult:
+      resources:
+      - group: ""
+        hookPhase: Running
+        kind: Namespace
+        message: namespace/guacamole configured
+        name: guacamole
+        namespace: guacamole
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Secret
+        message: secret/postgres-secret configured
+        name: postgres-secret
+        namespace: guacamole
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: PersistentVolumeClaim
+        message: persistentvolumeclaim/guacd-pvc configured
+        name: guacd-pvc
+        namespace: guacamole
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: PersistentVolumeClaim
+        message: persistentvolumeclaim/guacamole-client-pvc configured
+        name: guacamole-client-pvc
+        namespace: guacamole
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: PersistentVolumeClaim
+        message: persistentvolumeclaim/guacamole-db-pvc configured
+        name: guacamole-db-pvc
+        namespace: guacamole
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/guacamole configured
+        name: guacamole
+        namespace: guacamole
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/guacd configured
+        name: guacd
+        namespace: guacamole
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/postgres configured
+        name: postgres
+        namespace: guacamole
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/guacamole configured
+        name: guacamole
+        namespace: guacamole
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/guacd configured
+        name: guacd
+        namespace: guacamole
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/postgres configured
+        name: postgres
+        namespace: guacamole
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: networking.k8s.io
+        hookPhase: Running
+        kind: Ingress
+        message: ingress.networking.k8s.io/guacamole configured
+        name: guacamole
+        namespace: guacamole
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      revision: 2fc189cdec3cc3e8f6a74f8558869c917e334366
+      source:
+        directory:
+          include: '*.yaml'
+          jsonnet: {}
+        path: guacamole
+        repoURL: https://github.com/jogaleins/examples.git
+        targetRevision: HEAD
+  reconciledAt: "2023-05-24T02:13:30Z"
+  resources:
+  - kind: Namespace
+    name: guacamole
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: PersistentVolumeClaim
+    name: guacamole-client-pvc
+    namespace: guacamole
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: PersistentVolumeClaim
+    name: guacamole-db-pvc
+    namespace: guacamole
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: PersistentVolumeClaim
+    name: guacd-pvc
+    namespace: guacamole
+    status: Synced
+    version: v1
+  - kind: Secret
+    name: postgres-secret
+    namespace: guacamole
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: guacamole
+    namespace: guacamole
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: guacd
+    namespace: guacamole
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: postgres
+    namespace: guacamole
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: guacamole
+    namespace: guacamole
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: guacd
+    namespace: guacamole
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: postgres
+    namespace: guacamole
+    status: Synced
+    version: v1
+  - group: networking.k8s.io
+    health:
+      status: Healthy
+    kind: Ingress
+    name: guacamole
+    namespace: guacamole
+    status: Synced
+    version: v1
+  sourceType: Directory
+  summary:
+    externalURLs:
+    - http://guacamole.pazon.work/
+    images:
+    - jwetzell/guacamole
+    - linuxserver/guacd:latest
+    - postgres:13.4
+  sync:
+    comparedTo:
+      destination:
+        namespace: guacamole
+        server: https://kubernetes.default.svc
+      source:
+        directory:
+          include: '*.yaml'
+          jsonnet: {}
+        path: guacamole
+        repoURL: https://github.com/jogaleins/examples.git
+        targetRevision: HEAD
+    revision: 2fc189cdec3cc3e8f6a74f8558869c917e334366
+    status: Synced
