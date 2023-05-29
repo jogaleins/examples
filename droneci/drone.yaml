@@ -17,7 +17,7 @@ steps:
   commands:
   - sleep 5 ## give docker enough time to start
   - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-  - docker build ./code-server -t jogaleins/code-server:1.0
+  - docker build ./code-server -t jogaleins/code-server:1.0.${DRONE_BUILD_NUMBER}
   - docker push jogaleins/code-server:1.0
 
 services:
