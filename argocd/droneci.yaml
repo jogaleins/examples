@@ -1,0 +1,233 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: "2023-05-29T07:34:19Z"
+  generation: 16
+  name: droneci
+  namespace: argocd
+  resourceVersion: "328706"
+  uid: 6d9d9b12-acd2-43e1-9b99-1e6ecdd1fe8d
+spec:
+  destination:
+    namespace: droneci
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    directory:
+      exclude: drone.yaml
+      include: '*.yaml'
+      jsonnet: {}
+      recurse: true
+    path: droneci
+    repoURL: https://github.com/jogaleins/examples.git
+    targetRevision: HEAD
+status:
+  health:
+    status: Progressing
+  history:
+  - deployStartedAt: "2023-05-29T07:38:04Z"
+    deployedAt: "2023-05-29T07:38:06Z"
+    id: 0
+    revision: b043d26cdbad1e0de5d2cbf066e929c3510048a4
+    source:
+      directory:
+        exclude: drone.yaml
+        include: '*.yaml'
+        jsonnet: {}
+        recurse: true
+      path: droneci
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  operationState:
+    finishedAt: "2023-05-29T07:38:06Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        username: admin
+      retry: {}
+      sync:
+        revision: b043d26cdbad1e0de5d2cbf066e929c3510048a4
+        syncStrategy:
+          hook: {}
+    phase: Succeeded
+    startedAt: "2023-05-29T07:38:04Z"
+    syncResult:
+      resources:
+      - group: ""
+        hookPhase: Running
+        kind: ServiceAccount
+        message: serviceaccount/drone-runner configured
+        name: drone-runner
+        namespace: droneci
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Secret
+        message: secret/drone-server-secret configured
+        name: drone-server-secret
+        namespace: droneci
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: PersistentVolumeClaim
+        message: persistentvolumeclaim/postgres-pvc configured
+        name: postgres-pvc
+        namespace: droneci
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: Role
+        message: role.rbac.authorization.k8s.io/drone-runner reconciled. reconciliation
+          required update. role.rbac.authorization.k8s.io/drone-runner configured
+        name: drone-runner
+        namespace: droneci
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: RoleBinding
+        message: rolebinding.rbac.authorization.k8s.io/drone-runner reconciled. reconciliation
+          required update. rolebinding.rbac.authorization.k8s.io/drone-runner configured
+        name: drone-runner
+        namespace: droneci
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/droneserver configured
+        name: droneserver
+        namespace: droneci
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/drone-runner configured
+        name: drone-runner
+        namespace: droneci
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/drone-server configured
+        name: drone-server
+        namespace: droneci
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: networking.k8s.io
+        hookPhase: Running
+        kind: Ingress
+        message: ingress.networking.k8s.io/drone-server configured
+        name: drone-server
+        namespace: droneci
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      revision: b043d26cdbad1e0de5d2cbf066e929c3510048a4
+      source:
+        directory:
+          exclude: drone.yaml
+          include: '*.yaml'
+          jsonnet: {}
+          recurse: true
+        path: droneci
+        repoURL: https://github.com/jogaleins/examples.git
+        targetRevision: HEAD
+  reconciledAt: "2023-05-29T07:38:06Z"
+  resources:
+  - health:
+      status: Healthy
+    kind: PersistentVolumeClaim
+    name: postgres-pvc
+    namespace: droneci
+    status: Synced
+    version: v1
+  - kind: Secret
+    name: drone-server-secret
+    namespace: droneci
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: droneserver
+    namespace: droneci
+    status: Synced
+    version: v1
+  - kind: ServiceAccount
+    name: drone-runner
+    namespace: droneci
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: drone-runner
+    namespace: droneci
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: drone-server
+    namespace: droneci
+    status: Synced
+    version: v1
+  - group: networking.k8s.io
+    health:
+      status: Healthy
+    kind: Ingress
+    name: drone-server
+    namespace: droneci
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: Role
+    name: drone-runner
+    namespace: droneci
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: RoleBinding
+    name: drone-runner
+    namespace: droneci
+    status: Synced
+    version: v1
+  sourceType: Directory
+  summary:
+    externalURLs:
+    - http://drone.pazon.work/
+    images:
+    - drone/drone-runner-kube:latest
+    - drone/drone:2
+  sync:
+    comparedTo:
+      destination:
+        namespace: droneci
+        server: https://kubernetes.default.svc
+      source:
+        directory:
+          exclude: drone.yaml
+          include: '*.yaml'
+          jsonnet: {}
+          recurse: true
+        path: droneci
+        repoURL: https://github.com/jogaleins/examples.git
+        targetRevision: HEAD
+    revision: b043d26cdbad1e0de5d2cbf066e929c3510048a4
+    status: Synced
