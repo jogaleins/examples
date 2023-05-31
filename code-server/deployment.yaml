@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: code-server
+  name: code-server
+  namespace: code-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: code-server
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: code-server
+    spec:
+      containers:
+      - image: jogaleins/code-server:1.0.3
+        name: code-server
+        ports:
+        - containerPort: 8443
+        resources: {}
+status: {}
