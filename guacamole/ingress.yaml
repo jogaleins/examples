@@ -8,7 +8,7 @@ metadata:
   namespace: guacamole
 spec:
   rules:
-  - host: gc.pazon.work
+  - host: gc.pazon.xyz
     http:
       paths:
       - backend:
