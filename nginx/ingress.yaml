@@ -8,7 +8,7 @@ metadata:
   namespace: default
 spec:
   rules:
-  - host: nginx.pazon.work
+  - host: nginx.pazon.xyz
     http:
       paths:
       - backend:
