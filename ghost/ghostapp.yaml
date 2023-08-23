@@ -22,7 +22,7 @@ spec:
         name: ghost
         env:
         - name: url
-          value: http://ghost.pazon.work
+          value: http://ghost.pazon.xyz
         - name: database__client
           value: mysql
         - name: database__connection__host
