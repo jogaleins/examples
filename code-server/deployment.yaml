@@ -1,27 +1,45 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
-    app: code-server
+        app: code-server
   name: code-server
-  namespace: code-server
+  namespace: default
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: code-server
-  strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: code-server
     spec:
       containers:
-      - image: jogaleins/code-server:1.0.3
+      - env:
+        - name: PASSWORD
+          value: Mko0_pl,
+        - name: PGID
+          value: "0"
+        - name: PROXY_DOMAIN
+          value: code.pazon.xyz
+        - name: PUID
+          value: "0"
+        - name: SUDO_PASSWORD
+          value: Mko0_pl,
+        - name: TZ
+          value: Asia/Singapore
+        image: jogaleins/code-server:latest
+        imagePullPolicy: Always
         name: code-server
         ports:
         - containerPort: 8443
-        resources: {}
-status: {}
+          name: code-server
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /config
+          name: code-server
+      volumes:
+      - name: code-server
+        persistentVolumeClaim:
+          claimName: code-server

@@ -1,16 +1,11 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  namespace: code-server
   name: code-server
-  annotations:
-    kubernetes.io/ingress.class: "traefik"
-    traefik.ingress.kubernetes.io/frontend-entry-points: http,https
-    traefik.ingress.kubernetes.io/redirect-entry-point: https
-    traefik.ingress.kubernetes.io/redirect-permanent: "true"
+  namespace: default
 spec:
   rules:
-  - host: code.pazon.work
+  - host: code.lan.pazon.xyz
     http:
       paths:
       - backend:
@@ -18,5 +13,13 @@ spec:
             name: code-server
             port:
               number: 8443
-        path: /
-        pathType: Prefix
+        pathType: ImplementationSpecific
+  - host: code.pazon.xyz
+    http:
+      paths:
+      - backend:
+          service:
+            name: code-server
+            port:
+              number: 8443
+        pathType: ImplementationSpecific
