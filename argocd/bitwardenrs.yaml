@@ -1,0 +1,254 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: "2023-08-26T09:11:07Z"
+  generation: 12
+  managedFields:
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        .: {}
+        f:destination:
+          .: {}
+          f:namespace: {}
+          f:server: {}
+        f:project: {}
+        f:source:
+          .: {}
+          f:directory:
+            .: {}
+            f:include: {}
+            f:jsonnet: {}
+            f:recurse: {}
+          f:path: {}
+          f:repoURL: {}
+          f:targetRevision: {}
+        f:syncPolicy:
+          .: {}
+          f:automated: {}
+      f:status:
+        .: {}
+        f:health: {}
+        f:summary: {}
+        f:sync:
+          .: {}
+          f:comparedTo:
+            .: {}
+            f:destination: {}
+            f:source: {}
+    manager: argocd-server
+    operation: Update
+    time: "2023-08-26T09:11:07Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:controllerNamespace: {}
+        f:health:
+          f:status: {}
+        f:history: {}
+        f:operationState:
+          .: {}
+          f:finishedAt: {}
+          f:message: {}
+          f:operation:
+            .: {}
+            f:initiatedBy:
+              .: {}
+              f:automated: {}
+            f:retry:
+              .: {}
+              f:limit: {}
+            f:sync:
+              .: {}
+              f:revision: {}
+          f:phase: {}
+          f:startedAt: {}
+          f:syncResult:
+            .: {}
+            f:resources: {}
+            f:revision: {}
+            f:source:
+              .: {}
+              f:directory:
+                .: {}
+                f:include: {}
+                f:jsonnet: {}
+                f:recurse: {}
+              f:path: {}
+              f:repoURL: {}
+              f:targetRevision: {}
+        f:reconciledAt: {}
+        f:resources: {}
+        f:sourceType: {}
+        f:summary:
+          f:externalURLs: {}
+          f:images: {}
+        f:sync:
+          f:comparedTo:
+            f:destination:
+              f:namespace: {}
+              f:server: {}
+            f:source:
+              f:directory:
+                .: {}
+                f:include: {}
+                f:jsonnet: {}
+                f:recurse: {}
+              f:path: {}
+              f:repoURL: {}
+              f:targetRevision: {}
+          f:revision: {}
+          f:status: {}
+    manager: argocd-application-controller
+    operation: Update
+    time: "2023-08-26T09:11:09Z"
+  name: bitwardenrs
+  namespace: argocd
+  resourceVersion: "1758030"
+  uid: 83260ee8-a209-4bd8-84d2-135fb959b5e4
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    directory:
+      include: '*.yaml'
+      jsonnet: {}
+      recurse: true
+    path: bitwardenrs
+    repoURL: https://github.com/jogaleins/examples.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}
+status:
+  controllerNamespace: argocd
+  health:
+    status: Healthy
+  history:
+  - deployStartedAt: "2023-08-26T09:11:08Z"
+    deployedAt: "2023-08-26T09:11:09Z"
+    id: 0
+    revision: f88bcd0a97af9b5d61de57717a79064b6760191c
+    source:
+      directory:
+        include: '*.yaml'
+        jsonnet: {}
+        recurse: true
+      path: bitwardenrs
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  operationState:
+    finishedAt: "2023-08-26T09:11:09Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        automated: true
+      retry:
+        limit: 5
+      sync:
+        revision: f88bcd0a97af9b5d61de57717a79064b6760191c
+    phase: Succeeded
+    startedAt: "2023-08-26T09:11:08Z"
+    syncResult:
+      resources:
+      - group: ""
+        hookPhase: Running
+        kind: PersistentVolumeClaim
+        message: persistentvolumeclaim/bitwarden-data configured
+        name: bitwarden-data
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/bitwardenrs configured
+        name: bitwardenrs
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/bitwardenrs configured
+        name: bitwardenrs
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: networking.k8s.io
+        hookPhase: Running
+        kind: Ingress
+        message: ingress.networking.k8s.io/warden-ing configured
+        name: warden-ing
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      revision: f88bcd0a97af9b5d61de57717a79064b6760191c
+      source:
+        directory:
+          include: '*.yaml'
+          jsonnet: {}
+          recurse: true
+        path: bitwardenrs
+        repoURL: https://github.com/jogaleins/examples.git
+        targetRevision: HEAD
+  reconciledAt: "2023-08-26T09:11:09Z"
+  resources:
+  - health:
+      status: Healthy
+    kind: PersistentVolumeClaim
+    name: bitwarden-data
+    namespace: default
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: bitwardenrs
+    namespace: default
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: bitwardenrs
+    namespace: default
+    status: Synced
+    version: v1
+  - group: networking.k8s.io
+    health:
+      status: Healthy
+    kind: Ingress
+    name: warden-ing
+    namespace: default
+    status: Synced
+    version: v1
+  sourceType: Directory
+  summary:
+    externalURLs:
+    - http://warden.pazon.xyz/
+    images:
+    - vaultwarden/server:latest
+  sync:
+    comparedTo:
+      destination:
+        namespace: default
+        server: https://kubernetes.default.svc
+      source:
+        directory:
+          include: '*.yaml'
+          jsonnet: {}
+          recurse: true
+        path: bitwardenrs
+        repoURL: https://github.com/jogaleins/examples.git
+        targetRevision: HEAD
+    revision: f88bcd0a97af9b5d61de57717a79064b6760191c
+    status: Synced

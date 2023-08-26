@@ -1,12 +1,116 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  creationTimestamp: "2023-05-04T10:36:18Z"
-  generation: 37
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"argoproj.io/v1alpha1","kind":"Application","metadata":{"annotations":{},"creationTimestamp":"2023-05-04T10:36:18Z","generation":37,"name":"nginx","namespace":"argocd","resourceVersion":"474335","uid":"78360a84-ef68-4a69-a15e-4afe0d00b275"},"spec":{"destination":{"namespace":"default","server":"https://kubernetes.default.svc"},"project":"default","source":{"directory":{"include":"*.yaml","jsonnet":{}},"path":"nginx","repoURL":"https://github.com/jogaleins/examples.git","targetRevision":"HEAD"},"syncPolicy":{"automated":{}}},"status":{"health":{"status":"Healthy"},"history":[{"deployStartedAt":"2023-05-04T10:36:20Z","deployedAt":"2023-05-04T10:36:20Z","id":0,"revision":"1ca6694516c9e1ed70b3b1d9f7a14a3b900bfecf","source":{"directory":{"include":"*.yaml","jsonnet":{}},"path":"nginx","repoURL":"https://github.com/jogaleins/examples.git","targetRevision":"HEAD"}}],"operationState":{"finishedAt":"2023-05-04T10:36:20Z","message":"successfully synced (all tasks run)","operation":{"initiatedBy":{"automated":true},"retry":{"limit":5},"sync":{"revision":"1ca6694516c9e1ed70b3b1d9f7a14a3b900bfecf"}},"phase":"Succeeded","startedAt":"2023-05-04T10:36:20Z","syncResult":{"resources":[{"group":"","hookPhase":"Running","kind":"Service","message":"service/nginx configured","name":"nginx","namespace":"default","status":"Synced","syncPhase":"Sync","version":"v1"},{"group":"apps","hookPhase":"Running","kind":"Deployment","message":"deployment.apps/nginx configured","name":"nginx","namespace":"default","status":"Synced","syncPhase":"Sync","version":"v1"},{"group":"networking.k8s.io","hookPhase":"Running","kind":"Ingress","message":"ingress.networking.k8s.io/nginx configured","name":"nginx","namespace":"default","status":"Synced","syncPhase":"Sync","version":"v1"}],"revision":"1ca6694516c9e1ed70b3b1d9f7a14a3b900bfecf","source":{"directory":{"include":"*.yaml","jsonnet":{}},"path":"nginx","repoURL":"https://github.com/jogaleins/examples.git","targetRevision":"HEAD"}}},"reconciledAt":"2023-05-06T07:57:54Z","resources":[{"health":{"status":"Healthy"},"kind":"Service","name":"nginx","namespace":"default","status":"Synced","version":"v1"},{"group":"apps","health":{"status":"Healthy"},"kind":"Deployment","name":"nginx","namespace":"default","status":"Synced","version":"v1"},{"group":"networking.k8s.io","health":{"status":"Healthy"},"kind":"Ingress","name":"nginx","namespace":"default","status":"Synced","version":"v1"}],"sourceType":"Directory","summary":{"externalURLs":["http://nginx.pazon.work/","http://www.pazon.work/"],"images":["nginx"]},"sync":{"comparedTo":{"destination":{"namespace":"default","server":"https://kubernetes.default.svc"},"source":{"directory":{"include":"*.yaml","jsonnet":{}},"path":"nginx","repoURL":"https://github.com/jogaleins/examples.git","targetRevision":"HEAD"}},"revision":"1ca6694516c9e1ed70b3b1d9f7a14a3b900bfecf","status":"Synced"}}}
+  creationTimestamp: "2023-08-23T04:56:22Z"
+  generation: 1583
+  managedFields:
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+      f:spec:
+        .: {}
+        f:destination:
+          .: {}
+          f:namespace: {}
+          f:server: {}
+        f:project: {}
+        f:source:
+          .: {}
+          f:directory:
+            .: {}
+            f:include: {}
+            f:jsonnet: {}
+          f:path: {}
+          f:repoURL: {}
+          f:targetRevision: {}
+        f:syncPolicy:
+          .: {}
+          f:automated: {}
+      f:status:
+        .: {}
+        f:health: {}
+        f:summary: {}
+        f:sync:
+          .: {}
+          f:comparedTo:
+            .: {}
+            f:destination:
+              .: {}
+              f:namespace: {}
+              f:server: {}
+            f:source:
+              .: {}
+              f:directory:
+                .: {}
+                f:include: {}
+                f:jsonnet: {}
+              f:path: {}
+              f:repoURL: {}
+              f:targetRevision: {}
+    manager: kubectl-client-side-apply
+    operation: Update
+    time: "2023-08-23T04:56:22Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:controllerNamespace: {}
+        f:health:
+          f:status: {}
+        f:history: {}
+        f:operationState:
+          .: {}
+          f:finishedAt: {}
+          f:message: {}
+          f:operation:
+            .: {}
+            f:initiatedBy:
+              .: {}
+              f:automated: {}
+            f:retry:
+              .: {}
+              f:limit: {}
+            f:sync:
+              .: {}
+              f:revision: {}
+          f:phase: {}
+          f:startedAt: {}
+          f:syncResult:
+            .: {}
+            f:resources: {}
+            f:revision: {}
+            f:source:
+              .: {}
+              f:directory:
+                .: {}
+                f:include: {}
+                f:jsonnet: {}
+              f:path: {}
+              f:repoURL: {}
+              f:targetRevision: {}
+        f:reconciledAt: {}
+        f:resources: {}
+        f:sourceType: {}
+        f:summary:
+          f:externalURLs: {}
+          f:images: {}
+        f:sync:
+          f:revision: {}
+          f:status: {}
+    manager: argocd-application-controller
+    operation: Update
+    time: "2023-08-26T09:12:58Z"
   name: nginx
   namespace: argocd
-  resourceVersion: "474335"
-  uid: 78360a84-ef68-4a69-a15e-4afe0d00b275
+  resourceVersion: "1758934"
+  uid: f002f478-8045-4b86-bbba-f0b59dc12688
 spec:
   destination:
     namespace: default
@@ -22,6 +126,7 @@ spec:
   syncPolicy:
     automated: {}
 status:
+  controllerNamespace: argocd
   health:
     status: Healthy
   history:
@@ -36,8 +141,63 @@ status:
       path: nginx
       repoURL: https://github.com/jogaleins/examples.git
       targetRevision: HEAD
+  - deployStartedAt: "2023-08-23T04:56:23Z"
+    deployedAt: "2023-08-23T04:56:23Z"
+    id: 1
+    revision: 37c5b2dabb0f9dc3b64f220858ecb296909b43bc
+    source:
+      directory:
+        include: '*.yaml'
+        jsonnet: {}
+      path: nginx
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  - deployStartedAt: "2023-08-23T10:06:27Z"
+    deployedAt: "2023-08-23T10:06:28Z"
+    id: 2
+    revision: 84b56a0b4a785442ada45866647e068f1f5f6bba
+    source:
+      directory:
+        include: '*.yaml'
+        jsonnet: {}
+      path: nginx
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  - deployStartedAt: "2023-08-23T10:06:28Z"
+    deployedAt: "2023-08-23T10:06:29Z"
+    id: 3
+    revision: 2ac1bfa4c7898e2fda0fdec5a3edf5dcc4c5a8c4
+    source:
+      directory:
+        include: '*.yaml'
+        jsonnet: {}
+      path: nginx
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  - deployStartedAt: "2023-08-23T10:11:26Z"
+    deployedAt: "2023-08-23T10:11:26Z"
+    id: 4
+    revision: 84b56a0b4a785442ada45866647e068f1f5f6bba
+    source:
+      directory:
+        include: '*.yaml'
+        jsonnet: {}
+      path: nginx
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  - deployStartedAt: "2023-08-23T11:11:27Z"
+    deployedAt: "2023-08-23T11:11:27Z"
+    id: 5
+    revision: 491c6d93fa893ab6f80ab5d697e94009d6236dd7
+    source:
+      directory:
+        include: '*.yaml'
+        jsonnet: {}
+      path: nginx
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
   operationState:
-    finishedAt: "2023-05-04T10:36:20Z"
+    finishedAt: "2023-08-23T11:11:27Z"
     message: successfully synced (all tasks run)
     operation:
       initiatedBy:
@@ -45,9 +205,9 @@ status:
       retry:
         limit: 5
       sync:
-        revision: 1ca6694516c9e1ed70b3b1d9f7a14a3b900bfecf
+        revision: 491c6d93fa893ab6f80ab5d697e94009d6236dd7
     phase: Succeeded
-    startedAt: "2023-05-04T10:36:20Z"
+    startedAt: "2023-08-23T11:11:27Z"
     syncResult:
       resources:
       - group: ""
@@ -77,7 +237,7 @@ status:
         status: Synced
         syncPhase: Sync
         version: v1
-      revision: 1ca6694516c9e1ed70b3b1d9f7a14a3b900bfecf
+      revision: 491c6d93fa893ab6f80ab5d697e94009d6236dd7
       source:
         directory:
           include: '*.yaml'
@@ -85,7 +245,7 @@ status:
         path: nginx
         repoURL: https://github.com/jogaleins/examples.git
         targetRevision: HEAD
-  reconciledAt: "2023-05-06T07:57:54Z"
+  reconciledAt: "2023-08-26T09:12:58Z"
   resources:
   - health:
       status: Healthy
@@ -113,8 +273,8 @@ status:
   sourceType: Directory
   summary:
     externalURLs:
-    - http://nginx.pazon.work/
-    - http://www.pazon.work/
+    - http://nginx.pazon.xyz/
+    - http://www.pazon.xyz/
     images:
     - nginx
   sync:
@@ -129,5 +289,5 @@ status:
         path: nginx
         repoURL: https://github.com/jogaleins/examples.git
         targetRevision: HEAD
-    revision: 1ca6694516c9e1ed70b3b1d9f7a14a3b900bfecf
+    revision: f88bcd0a97af9b5d61de57717a79064b6760191c
     status: Synced

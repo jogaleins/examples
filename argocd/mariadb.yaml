@@ -1,0 +1,234 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: "2023-08-26T09:13:15Z"
+  generation: 9
+  managedFields:
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        .: {}
+        f:destination:
+          .: {}
+          f:namespace: {}
+          f:server: {}
+        f:project: {}
+        f:source:
+          .: {}
+          f:directory:
+            .: {}
+            f:include: {}
+            f:jsonnet: {}
+            f:recurse: {}
+          f:path: {}
+          f:repoURL: {}
+          f:targetRevision: {}
+        f:syncPolicy:
+          .: {}
+          f:automated: {}
+      f:status:
+        .: {}
+        f:health: {}
+        f:summary: {}
+        f:sync:
+          .: {}
+          f:comparedTo:
+            .: {}
+            f:destination: {}
+            f:source: {}
+    manager: argocd-server
+    operation: Update
+    time: "2023-08-26T09:13:15Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:controllerNamespace: {}
+        f:health:
+          f:status: {}
+        f:history: {}
+        f:operationState:
+          .: {}
+          f:finishedAt: {}
+          f:message: {}
+          f:operation:
+            .: {}
+            f:initiatedBy:
+              .: {}
+              f:automated: {}
+            f:retry:
+              .: {}
+              f:limit: {}
+            f:sync:
+              .: {}
+              f:revision: {}
+          f:phase: {}
+          f:startedAt: {}
+          f:syncResult:
+            .: {}
+            f:resources: {}
+            f:revision: {}
+            f:source:
+              .: {}
+              f:directory:
+                .: {}
+                f:include: {}
+                f:jsonnet: {}
+                f:recurse: {}
+              f:path: {}
+              f:repoURL: {}
+              f:targetRevision: {}
+        f:reconciledAt: {}
+        f:resources: {}
+        f:sourceType: {}
+        f:summary:
+          f:images: {}
+        f:sync:
+          f:comparedTo:
+            f:destination:
+              f:namespace: {}
+              f:server: {}
+            f:source:
+              f:directory:
+                .: {}
+                f:include: {}
+                f:jsonnet: {}
+                f:recurse: {}
+              f:path: {}
+              f:repoURL: {}
+              f:targetRevision: {}
+          f:revision: {}
+          f:status: {}
+    manager: argocd-application-controller
+    operation: Update
+    time: "2023-08-26T09:13:16Z"
+  name: mariadb
+  namespace: argocd
+  resourceVersion: "1759109"
+  uid: 2a3047f0-ef7a-40d1-bf78-4c65ca0cf925
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    directory:
+      include: '*.yaml'
+      jsonnet: {}
+      recurse: true
+    path: mariadb
+    repoURL: https://github.com/jogaleins/examples.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}
+status:
+  controllerNamespace: argocd
+  health:
+    status: Healthy
+  history:
+  - deployStartedAt: "2023-08-26T09:13:15Z"
+    deployedAt: "2023-08-26T09:13:16Z"
+    id: 0
+    revision: 0cc92b601b649f9d4cbe9f0f00ffdfd3b6d20d90
+    source:
+      directory:
+        include: '*.yaml'
+        jsonnet: {}
+        recurse: true
+      path: mariadb
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  operationState:
+    finishedAt: "2023-08-26T09:13:16Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        automated: true
+      retry:
+        limit: 5
+      sync:
+        revision: 0cc92b601b649f9d4cbe9f0f00ffdfd3b6d20d90
+    phase: Succeeded
+    startedAt: "2023-08-26T09:13:15Z"
+    syncResult:
+      resources:
+      - group: ""
+        hookPhase: Running
+        kind: PersistentVolumeClaim
+        message: persistentvolumeclaim/mariadb-pv configured
+        name: mariadb-pv
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/mariadb configured
+        name: mariadb
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/mariadb configured
+        name: mariadb
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      revision: 0cc92b601b649f9d4cbe9f0f00ffdfd3b6d20d90
+      source:
+        directory:
+          include: '*.yaml'
+          jsonnet: {}
+          recurse: true
+        path: mariadb
+        repoURL: https://github.com/jogaleins/examples.git
+        targetRevision: HEAD
+  reconciledAt: "2023-08-26T09:13:16Z"
+  resources:
+  - health:
+      status: Healthy
+    kind: PersistentVolumeClaim
+    name: mariadb-pv
+    namespace: default
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: mariadb
+    namespace: default
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: mariadb
+    namespace: default
+    status: Synced
+    version: v1
+  sourceType: Directory
+  summary:
+    images:
+    - mariadb:10.7.8
+  sync:
+    comparedTo:
+      destination:
+        namespace: default
+        server: https://kubernetes.default.svc
+      source:
+        directory:
+          include: '*.yaml'
+          jsonnet: {}
+          recurse: true
+        path: mariadb
+        repoURL: https://github.com/jogaleins/examples.git
+        targetRevision: HEAD
+    revision: 0cc92b601b649f9d4cbe9f0f00ffdfd3b6d20d90
+    status: Synced

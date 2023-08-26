@@ -1,12 +1,119 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  creationTimestamp: "2023-05-04T10:00:18Z"
-  generation: 54
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"argoproj.io/v1alpha1","kind":"Application","metadata":{"annotations":{},"creationTimestamp":"2023-05-04T10:00:18Z","generation":54,"name":"cloudflared","namespace":"argocd","resourceVersion":"475126","uid":"b8b803ef-84fe-4abf-860b-8a1718cf8e5c"},"spec":{"destination":{"namespace":"default","server":"https://kubernetes.default.svc"},"project":"default","source":{"directory":{"exclude":"config.yaml","include":"*.yaml","jsonnet":{}},"path":"cloudflared","repoURL":"https://github.com/jogaleins/examples.git","targetRevision":"HEAD"},"syncPolicy":{"automated":{}}},"status":{"health":{"status":"Healthy"},"history":[{"deployStartedAt":"2023-05-04T10:00:19Z","deployedAt":"2023-05-04T10:00:19Z","id":0,"revision":"773cc1f205ba4f2348d67889cbc2e0ce3c979b74","source":{"directory":{"exclude":"config.yaml","include":"*.yaml","jsonnet":{}},"path":"cloudflared","repoURL":"https://github.com/jogaleins/examples.git","targetRevision":"HEAD"}}],"operationState":{"finishedAt":"2023-05-04T10:00:19Z","message":"successfully synced (all tasks run)","operation":{"initiatedBy":{"automated":true},"retry":{"limit":5},"sync":{"revision":"773cc1f205ba4f2348d67889cbc2e0ce3c979b74"}},"phase":"Succeeded","startedAt":"2023-05-04T10:00:19Z","syncResult":{"resources":[{"group":"","hookPhase":"Running","kind":"Namespace","message":"namespace/cloudflared-argo created","name":"cloudflared-argo","namespace":"default","status":"Synced","syncPhase":"Sync","version":"v1"},{"group":"","hookPhase":"Running","kind":"ConfigMap","message":"configmap/cloudflared created","name":"cloudflared","namespace":"cloudflared-argo","status":"Synced","syncPhase":"Sync","version":"v1"},{"group":"apps","hookPhase":"Running","kind":"DaemonSet","message":"daemonset.apps/cloudflared configured","name":"cloudflared","namespace":"default","status":"Synced","syncPhase":"Sync","version":"v1"}],"revision":"773cc1f205ba4f2348d67889cbc2e0ce3c979b74","source":{"directory":{"exclude":"config.yaml","include":"*.yaml","jsonnet":{}},"path":"cloudflared","repoURL":"https://github.com/jogaleins/examples.git","targetRevision":"HEAD"}}},"reconciledAt":"2023-05-06T08:00:54Z","resources":[{"kind":"ConfigMap","name":"cloudflared","namespace":"cloudflared-argo","status":"Synced","version":"v1"},{"kind":"Namespace","name":"cloudflared-argo","status":"Synced","version":"v1"},{"group":"apps","health":{"status":"Healthy"},"kind":"DaemonSet","name":"cloudflared","namespace":"default","status":"Synced","version":"v1"}],"sourceType":"Directory","summary":{"images":["cloudflare/cloudflared:2022.3.0"]},"sync":{"comparedTo":{"destination":{"namespace":"default","server":"https://kubernetes.default.svc"},"source":{"directory":{"exclude":"config.yaml","include":"*.yaml","jsonnet":{}},"path":"cloudflared","repoURL":"https://github.com/jogaleins/examples.git","targetRevision":"HEAD"}},"revision":"1ca6694516c9e1ed70b3b1d9f7a14a3b900bfecf","status":"Synced"}}}
+  creationTimestamp: "2023-08-23T04:52:04Z"
+  generation: 1573
+  managedFields:
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+      f:spec:
+        .: {}
+        f:destination:
+          .: {}
+          f:namespace: {}
+          f:server: {}
+        f:project: {}
+        f:source:
+          .: {}
+          f:directory:
+            .: {}
+            f:exclude: {}
+            f:include: {}
+            f:jsonnet: {}
+          f:path: {}
+          f:repoURL: {}
+          f:targetRevision: {}
+        f:syncPolicy:
+          .: {}
+          f:automated: {}
+      f:status:
+        .: {}
+        f:health: {}
+        f:summary: {}
+        f:sync:
+          .: {}
+          f:comparedTo:
+            .: {}
+            f:destination:
+              .: {}
+              f:namespace: {}
+              f:server: {}
+            f:source:
+              .: {}
+              f:directory:
+                .: {}
+                f:exclude: {}
+                f:include: {}
+                f:jsonnet: {}
+              f:path: {}
+              f:repoURL: {}
+              f:targetRevision: {}
+    manager: kubectl-client-side-apply
+    operation: Update
+    time: "2023-08-23T04:52:04Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:controllerNamespace: {}
+        f:health:
+          f:status: {}
+        f:history: {}
+        f:operationState:
+          .: {}
+          f:finishedAt: {}
+          f:message: {}
+          f:operation:
+            .: {}
+            f:initiatedBy:
+              .: {}
+              f:username: {}
+            f:retry: {}
+            f:sync:
+              .: {}
+              f:revision: {}
+              f:syncStrategy:
+                .: {}
+                f:hook: {}
+          f:phase: {}
+          f:startedAt: {}
+          f:syncResult:
+            .: {}
+            f:resources: {}
+            f:revision: {}
+            f:source:
+              .: {}
+              f:directory:
+                .: {}
+                f:exclude: {}
+                f:include: {}
+                f:jsonnet: {}
+              f:path: {}
+              f:repoURL: {}
+              f:targetRevision: {}
+        f:reconciledAt: {}
+        f:resources: {}
+        f:sourceType: {}
+        f:summary:
+          f:images: {}
+        f:sync:
+          f:revision: {}
+          f:status: {}
+    manager: argocd-application-controller
+    operation: Update
+    time: "2023-08-26T09:15:58Z"
   name: cloudflared
   namespace: argocd
-  resourceVersion: "475126"
-  uid: b8b803ef-84fe-4abf-860b-8a1718cf8e5c
+  resourceVersion: "1760482"
+  uid: fc0de7fc-66d9-4edb-8c63-2f8188283f43
 spec:
   destination:
     namespace: default
@@ -23,6 +130,7 @@ spec:
   syncPolicy:
     automated: {}
 status:
+  controllerNamespace: argocd
   health:
     status: Healthy
   history:
@@ -38,24 +146,61 @@ status:
       path: cloudflared
       repoURL: https://github.com/jogaleins/examples.git
       targetRevision: HEAD
+  - deployStartedAt: "2023-08-23T04:52:08Z"
+    deployedAt: "2023-08-23T04:52:10Z"
+    id: 1
+    revision: 37c5b2dabb0f9dc3b64f220858ecb296909b43bc
+    source:
+      directory:
+        exclude: config.yaml
+        include: '*.yaml'
+        jsonnet: {}
+      path: cloudflared
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  - deployStartedAt: "2023-08-23T09:47:54Z"
+    deployedAt: "2023-08-23T09:47:55Z"
+    id: 2
+    revision: cbdebba572ed9e79bfad33347c8823a826fe82b5
+    source:
+      directory:
+        exclude: config.yaml
+        include: '*.yaml'
+        jsonnet: {}
+      path: cloudflared
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  - deployStartedAt: "2023-08-23T09:48:00Z"
+    deployedAt: "2023-08-23T09:48:00Z"
+    id: 3
+    revision: cbdebba572ed9e79bfad33347c8823a826fe82b5
+    source:
+      directory:
+        exclude: config.yaml
+        include: '*.yaml'
+        jsonnet: {}
+      path: cloudflared
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
   operationState:
-    finishedAt: "2023-05-04T10:00:19Z"
+    finishedAt: "2023-08-23T09:48:00Z"
     message: successfully synced (all tasks run)
     operation:
       initiatedBy:
-        automated: true
-      retry:
-        limit: 5
+        username: admin
+      retry: {}
       sync:
-        revision: 773cc1f205ba4f2348d67889cbc2e0ce3c979b74
+        revision: cbdebba572ed9e79bfad33347c8823a826fe82b5
+        syncStrategy:
+          hook: {}
     phase: Succeeded
-    startedAt: "2023-05-04T10:00:19Z"
+    startedAt: "2023-08-23T09:48:00Z"
     syncResult:
       resources:
       - group: ""
         hookPhase: Running
         kind: Namespace
-        message: namespace/cloudflared-argo created
+        message: namespace/cloudflared-argo configured
         name: cloudflared-argo
         namespace: default
         status: Synced
@@ -63,8 +208,17 @@ status:
         version: v1
       - group: ""
         hookPhase: Running
+        kind: Secret
+        message: secret/tunnel-credentials configured
+        name: tunnel-credentials
+        namespace: cloudflared-argo
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
         kind: ConfigMap
-        message: configmap/cloudflared created
+        message: configmap/cloudflared configured
         name: cloudflared
         namespace: cloudflared-argo
         status: Synced
@@ -73,13 +227,13 @@ status:
       - group: apps
         hookPhase: Running
         kind: DaemonSet
-        message: daemonset.apps/cloudflared configured
+        message: daemonset.apps/cloudflared unchanged
         name: cloudflared
-        namespace: default
+        namespace: cloudflared-argo
         status: Synced
         syncPhase: Sync
         version: v1
-      revision: 773cc1f205ba4f2348d67889cbc2e0ce3c979b74
+      revision: cbdebba572ed9e79bfad33347c8823a826fe82b5
       source:
         directory:
           exclude: config.yaml
@@ -88,7 +242,7 @@ status:
         path: cloudflared
         repoURL: https://github.com/jogaleins/examples.git
         targetRevision: HEAD
-  reconciledAt: "2023-05-06T08:00:54Z"
+  reconciledAt: "2023-08-26T09:15:58Z"
   resources:
   - kind: ConfigMap
     name: cloudflared
@@ -99,12 +253,17 @@ status:
     name: cloudflared-argo
     status: Synced
     version: v1
+  - kind: Secret
+    name: tunnel-credentials
+    namespace: cloudflared-argo
+    status: Synced
+    version: v1
   - group: apps
     health:
       status: Healthy
     kind: DaemonSet
     name: cloudflared
-    namespace: default
+    namespace: cloudflared-argo
     status: Synced
     version: v1
   sourceType: Directory
@@ -124,5 +283,5 @@ status:
         path: cloudflared
         repoURL: https://github.com/jogaleins/examples.git
         targetRevision: HEAD
-    revision: 1ca6694516c9e1ed70b3b1d9f7a14a3b900bfecf
+    revision: 0cc92b601b649f9d4cbe9f0f00ffdfd3b6d20d90
     status: Synced

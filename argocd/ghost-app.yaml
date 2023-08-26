@@ -1,12 +1,119 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  creationTimestamp: "2023-05-04T02:09:43Z"
-  generation: 257
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"argoproj.io/v1alpha1","kind":"Application","metadata":{"annotations":{},"creationTimestamp":"2023-05-04T02:09:43Z","generation":257,"name":"ghost","namespace":"argocd","resourceVersion":"475127","uid":"866df7f7-49c1-430c-bb70-e6343bb761f7"},"spec":{"destination":{"namespace":"default","server":"https://kubernetes.default.svc"},"project":"default","source":{"directory":{"include":"*.yaml","jsonnet":{},"recurse":true},"path":"ghost","repoURL":"https://github.com/jogaleins/examples.git","targetRevision":"HEAD"},"syncPolicy":{"automated":{}}},"status":{"health":{"status":"Healthy"},"history":[{"deployStartedAt":"2023-05-04T02:20:08Z","deployedAt":"2023-05-04T02:22:39Z","id":0,"revision":"02c735fe4cad66242eae1d737d7fdf0fe6fe8897","source":{"directory":{"include":"*.yaml","jsonnet":{},"recurse":true},"path":"ghost","repoURL":"https://github.com/jogaleins/examples.git","targetRevision":"HEAD"}},{"deployStartedAt":"2023-05-04T02:22:39Z","deployedAt":"2023-05-04T02:22:40Z","id":1,"revision":"8305148496cf7ca9fbb9cd54d02a21e63c9ea21a","source":{"directory":{"include":"*.yaml","jsonnet":{},"recurse":true},"path":"ghost","repoURL":"https://github.com/jogaleins/examples.git","targetRevision":"HEAD"}}],"operationState":{"finishedAt":"2023-05-04T02:22:40Z","message":"successfully synced (all tasks run)","operation":{"initiatedBy":{"automated":true},"retry":{"limit":5},"sync":{"revision":"8305148496cf7ca9fbb9cd54d02a21e63c9ea21a"}},"phase":"Succeeded","startedAt":"2023-05-04T02:22:39Z","syncResult":{"resources":[{"group":"","hookPhase":"Running","kind":"PersistentVolumeClaim","message":"persistentvolumeclaim/db unchanged","name":"db","namespace":"default","status":"Synced","syncPhase":"Sync","version":"v1"},{"group":"","hookPhase":"Running","kind":"PersistentVolumeClaim","message":"persistentvolumeclaim/ghost-app unchanged","name":"ghost-app","namespace":"default","status":"Synced","syncPhase":"Sync","version":"v1"},{"group":"","hookPhase":"Running","kind":"Service","message":"service/ghost configured","name":"ghost","namespace":"default","status":"Synced","syncPhase":"Sync","version":"v1"},{"group":"","hookPhase":"Running","kind":"Service","message":"service/mariadb configured","name":"mariadb","namespace":"default","status":"Synced","syncPhase":"Sync","version":"v1"},{"group":"apps","hookPhase":"Running","kind":"Deployment","message":"deployment.apps/ghost configured","name":"ghost","namespace":"default","status":"Synced","syncPhase":"Sync","version":"v1"},{"group":"apps","hookPhase":"Running","kind":"Deployment","message":"deployment.apps/mariadb configured","name":"mariadb","namespace":"default","status":"Synced","syncPhase":"Sync","version":"v1"},{"group":"networking.k8s.io","hookPhase":"Running","kind":"Ingress","message":"ingress.networking.k8s.io/ghost unchanged","name":"ghost","namespace":"default","status":"Synced","syncPhase":"Sync","version":"v1"}],"revision":"8305148496cf7ca9fbb9cd54d02a21e63c9ea21a","source":{"directory":{"include":"*.yaml","jsonnet":{},"recurse":true},"path":"ghost","repoURL":"https://github.com/jogaleins/examples.git","targetRevision":"HEAD"}}},"reconciledAt":"2023-05-06T08:00:54Z","resources":[{"health":{"status":"Healthy"},"kind":"PersistentVolumeClaim","name":"db","namespace":"default","status":"Synced","version":"v1"},{"health":{"status":"Healthy"},"kind":"PersistentVolumeClaim","name":"ghost-app","namespace":"default","status":"Synced","version":"v1"},{"health":{"status":"Healthy"},"kind":"Service","name":"ghost","namespace":"default","status":"Synced","version":"v1"},{"health":{"status":"Healthy"},"kind":"Service","name":"mariadb","namespace":"default","status":"Synced","version":"v1"},{"group":"apps","health":{"status":"Healthy"},"kind":"Deployment","name":"ghost","namespace":"default","status":"Synced","version":"v1"},{"group":"apps","health":{"status":"Healthy"},"kind":"Deployment","name":"mariadb","namespace":"default","status":"Synced","version":"v1"},{"group":"networking.k8s.io","health":{"status":"Healthy"},"kind":"Ingress","name":"ghost","namespace":"default","status":"Synced","version":"v1"}],"sourceType":"Directory","summary":{"externalURLs":["http://ghost.pazon.work/"],"images":["ghost:5.45.1-alpine","mariadb:10.7.8"]},"sync":{"comparedTo":{"destination":{"namespace":"default","server":"https://kubernetes.default.svc"},"source":{"directory":{"include":"*.yaml","jsonnet":{},"recurse":true},"path":"ghost","repoURL":"https://github.com/jogaleins/examples.git","targetRevision":"HEAD"}},"revision":"1ca6694516c9e1ed70b3b1d9f7a14a3b900bfecf","status":"Synced"}}}
+  creationTimestamp: "2023-08-23T11:47:00Z"
+  generation: 1504
+  managedFields:
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+      f:spec:
+        .: {}
+        f:destination:
+          .: {}
+          f:namespace: {}
+          f:server: {}
+        f:project: {}
+        f:source:
+          .: {}
+          f:directory:
+            .: {}
+            f:include: {}
+            f:jsonnet: {}
+            f:recurse: {}
+          f:path: {}
+          f:repoURL: {}
+          f:targetRevision: {}
+        f:syncPolicy:
+          .: {}
+          f:automated: {}
+      f:status:
+        .: {}
+        f:health: {}
+        f:summary: {}
+        f:sync:
+          .: {}
+          f:comparedTo:
+            .: {}
+            f:destination:
+              .: {}
+              f:namespace: {}
+              f:server: {}
+            f:source:
+              .: {}
+              f:directory:
+                .: {}
+                f:include: {}
+                f:jsonnet: {}
+                f:recurse: {}
+              f:path: {}
+              f:repoURL: {}
+              f:targetRevision: {}
+    manager: kubectl-client-side-apply
+    operation: Update
+    time: "2023-08-23T11:47:00Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:controllerNamespace: {}
+        f:health:
+          f:status: {}
+        f:history: {}
+        f:operationState:
+          .: {}
+          f:finishedAt: {}
+          f:message: {}
+          f:operation:
+            .: {}
+            f:initiatedBy:
+              .: {}
+              f:automated: {}
+            f:retry:
+              .: {}
+              f:limit: {}
+            f:sync:
+              .: {}
+              f:revision: {}
+          f:phase: {}
+          f:startedAt: {}
+          f:syncResult:
+            .: {}
+            f:resources: {}
+            f:revision: {}
+            f:source:
+              .: {}
+              f:directory:
+                .: {}
+                f:include: {}
+                f:jsonnet: {}
+                f:recurse: {}
+              f:path: {}
+              f:repoURL: {}
+              f:targetRevision: {}
+        f:reconciledAt: {}
+        f:resources: {}
+        f:sourceType: {}
+        f:summary:
+          f:externalURLs: {}
+          f:images: {}
+        f:sync:
+          f:revision: {}
+          f:status: {}
+    manager: argocd-application-controller
+    operation: Update
+    time: "2023-08-26T09:12:58Z"
   name: ghost
   namespace: argocd
-  resourceVersion: "475127"
-  uid: 866df7f7-49c1-430c-bb70-e6343bb761f7
+  resourceVersion: "1758936"
+  uid: a7cf6341-b0dc-476a-bbea-4d6d8f93ebe1
 spec:
   destination:
     namespace: default
@@ -23,6 +130,7 @@ spec:
   syncPolicy:
     automated: {}
 status:
+  controllerNamespace: argocd
   health:
     status: Healthy
   history:
@@ -50,8 +158,92 @@ status:
       path: ghost
       repoURL: https://github.com/jogaleins/examples.git
       targetRevision: HEAD
+  - deployStartedAt: "2023-08-23T11:47:01Z"
+    deployedAt: "2023-08-23T11:47:02Z"
+    id: 2
+    revision: ffd920e9aa9d522327a11c60f60efc753ebfc394
+    source:
+      directory:
+        include: '*.yaml'
+        jsonnet: {}
+        recurse: true
+      path: ghost
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  - deployStartedAt: "2023-08-26T08:18:39Z"
+    deployedAt: "2023-08-26T08:18:40Z"
+    id: 3
+    revision: 958859d3d24fd6d97000cd159bf45ca8d26b1625
+    source:
+      directory:
+        include: '*.yaml'
+        jsonnet: {}
+        recurse: true
+      path: ghost
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  - deployStartedAt: "2023-08-26T08:27:59Z"
+    deployedAt: "2023-08-26T08:28:01Z"
+    id: 4
+    revision: 1e3d56d567197f22a9b11c8ba7a607ec7d18e24c
+    source:
+      directory:
+        include: '*.yaml'
+        jsonnet: {}
+        recurse: true
+      path: ghost
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  - deployStartedAt: "2023-08-26T08:29:36Z"
+    deployedAt: "2023-08-26T08:29:38Z"
+    id: 5
+    revision: 29f0572c5c99f8e4c8469d9ca156266aa5011596
+    source:
+      directory:
+        include: '*.yaml'
+        jsonnet: {}
+        recurse: true
+      path: ghost
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  - deployStartedAt: "2023-08-26T08:36:42Z"
+    deployedAt: "2023-08-26T08:36:42Z"
+    id: 6
+    revision: 29f0572c5c99f8e4c8469d9ca156266aa5011596
+    source:
+      directory:
+        include: '*.yaml'
+        jsonnet: {}
+        recurse: true
+      path: ghost
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  - deployStartedAt: "2023-08-26T08:41:51Z"
+    deployedAt: "2023-08-26T08:41:51Z"
+    id: 7
+    revision: 29f0572c5c99f8e4c8469d9ca156266aa5011596
+    source:
+      directory:
+        include: '*.yaml'
+        jsonnet: {}
+        recurse: true
+      path: ghost
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  - deployStartedAt: "2023-08-26T08:49:08Z"
+    deployedAt: "2023-08-26T08:49:08Z"
+    id: 8
+    revision: 4d3f9f3a5eedeaad8189b7304d1fdcf6d03851d3
+    source:
+      directory:
+        include: '*.yaml'
+        jsonnet: {}
+        recurse: true
+      path: ghost
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
   operationState:
-    finishedAt: "2023-05-04T02:22:40Z"
+    finishedAt: "2023-08-26T08:49:08Z"
     message: successfully synced (all tasks run)
     operation:
       initiatedBy:
@@ -59,43 +251,16 @@ status:
       retry:
         limit: 5
       sync:
-        revision: 8305148496cf7ca9fbb9cd54d02a21e63c9ea21a
+        revision: 4d3f9f3a5eedeaad8189b7304d1fdcf6d03851d3
     phase: Succeeded
-    startedAt: "2023-05-04T02:22:39Z"
+    startedAt: "2023-08-26T08:49:08Z"
     syncResult:
       resources:
-      - group: ""
-        hookPhase: Running
-        kind: PersistentVolumeClaim
-        message: persistentvolumeclaim/db unchanged
-        name: db
-        namespace: default
-        status: Synced
-        syncPhase: Sync
-        version: v1
-      - group: ""
-        hookPhase: Running
-        kind: PersistentVolumeClaim
-        message: persistentvolumeclaim/ghost-app unchanged
-        name: ghost-app
-        namespace: default
-        status: Synced
-        syncPhase: Sync
-        version: v1
       - group: ""
         hookPhase: Running
         kind: Service
         message: service/ghost configured
         name: ghost
-        namespace: default
-        status: Synced
-        syncPhase: Sync
-        version: v1
-      - group: ""
-        hookPhase: Running
-        kind: Service
-        message: service/mariadb configured
-        name: mariadb
         namespace: default
         status: Synced
         syncPhase: Sync
@@ -109,15 +274,6 @@ status:
         status: Synced
         syncPhase: Sync
         version: v1
-      - group: apps
-        hookPhase: Running
-        kind: Deployment
-        message: deployment.apps/mariadb configured
-        name: mariadb
-        namespace: default
-        status: Synced
-        syncPhase: Sync
-        version: v1
       - group: networking.k8s.io
         hookPhase: Running
         kind: Ingress
@@ -127,7 +283,7 @@ status:
         status: Synced
         syncPhase: Sync
         version: v1
-      revision: 8305148496cf7ca9fbb9cd54d02a21e63c9ea21a
+      revision: 4d3f9f3a5eedeaad8189b7304d1fdcf6d03851d3
       source:
         directory:
           include: '*.yaml'
@@ -136,33 +292,12 @@ status:
         path: ghost
         repoURL: https://github.com/jogaleins/examples.git
         targetRevision: HEAD
-  reconciledAt: "2023-05-06T08:00:54Z"
+  reconciledAt: "2023-08-26T09:12:58Z"
   resources:
   - health:
       status: Healthy
-    kind: PersistentVolumeClaim
-    name: db
-    namespace: default
-    status: Synced
-    version: v1
-  - health:
-      status: Healthy
-    kind: PersistentVolumeClaim
-    name: ghost-app
-    namespace: default
-    status: Synced
-    version: v1
-  - health:
-      status: Healthy
     kind: Service
     name: ghost
-    namespace: default
-    status: Synced
-    version: v1
-  - health:
-      status: Healthy
-    kind: Service
-    name: mariadb
     namespace: default
     status: Synced
     version: v1
@@ -171,14 +306,6 @@ status:
       status: Healthy
     kind: Deployment
     name: ghost
-    namespace: default
-    status: Synced
-    version: v1
-  - group: apps
-    health:
-      status: Healthy
-    kind: Deployment
-    name: mariadb
     namespace: default
     status: Synced
     version: v1
@@ -193,10 +320,9 @@ status:
   sourceType: Directory
   summary:
     externalURLs:
-    - http://ghost.pazon.work/
+    - http://ghost.pazon.xyz/
     images:
-    - ghost:5.45.1-alpine
-    - mariadb:10.7.8
+    - ghost:2.6-alpine
   sync:
     comparedTo:
       destination:
@@ -210,5 +336,5 @@ status:
         path: ghost
         repoURL: https://github.com/jogaleins/examples.git
         targetRevision: HEAD
-    revision: 1ca6694516c9e1ed70b3b1d9f7a14a3b900bfecf
+    revision: f88bcd0a97af9b5d61de57717a79064b6760191c
     status: Synced
