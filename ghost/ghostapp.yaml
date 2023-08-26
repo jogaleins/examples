@@ -43,5 +43,5 @@ spec:
       volumes:
       - name: content
         persistentVolumeClaim:
-          claimName: ghost-app
+          claimName: ghost-blog-pvc
 status: {}
