@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+  name: warden-ing
+  namespace: default
+spec:
+  rules:
+  - host: warden.pazon.xyz
+    http:
+      paths:
+      - backend:
+          service:
+            name: bitwardenrs
+            port:
+              number: 80
+        path: /
+        pathType: Prefix

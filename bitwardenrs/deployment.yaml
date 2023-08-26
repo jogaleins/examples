@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: bitwardenrs
+  name: bitwardenrs
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bitwardenrs
+  template:
+    metadata:
+      labels:
+        app: bitwardenrs
+    spec:
+      containers:
+      - env:
+        - name: WEBSOCKET_ENABLED
+          value: "true"
+        - name: SIGNUPS_ALLOWED
+          value: "true"
+        image: vaultwarden/server:latest
+        imagePullPolicy: Always
+        name: server
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /data
+          name: data
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: bitwarden-data
