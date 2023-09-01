@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+  name: rxresume
+  namespace: default
+spec:
+  rules:
+  - host: rxserver.pazon.xyz
+    http:
+      paths:
+      - backend:
+          service:
+            name: rxresume-server
+            port:
+              number: 3100
+        path: /
+        pathType: Prefix
+  - host: rxclient.pazon.xyz
+    http:
+      paths:
+      - backend:
+          service:
+            name: rxresume-client
+            port:
+              number: 3000
+        path: /
+        pathType: Prefix

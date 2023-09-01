@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: rxresume-db
+  name: rxresume-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rxresume-db
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: rxresume-db
+    spec:
+      containers:
+      - env:
+        - name: POSTGRES_DB
+          value: postgres
+        - name: POSTGRES_USER 
+          value: postgres
+        - name: POSTGRES_PASSWORD
+          value: postgres
+        - name: PGDATA
+          value: /var/lib/postgresql/data/guacamole
+        image: postgres:alpine
+        name: postgres
+        ports:
+        - containerPort: 5432
+        volumeMounts:
+        - mountPath: /docker-entrypoint-initdb.d
+          name: rxresume-db
+          subPath: data/1
+        - mountPath: /var/lib/postgresql/data\
+          name: rxresume-db
+          subPath: data/2
+      volumes:
+      - name: rxresume-db
+        persistentVolumeClaim:
+          claimName: rxresume-db

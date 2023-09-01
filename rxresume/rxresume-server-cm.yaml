@@ -1,0 +1,33 @@
+apiVersion: v1
+data:
+  GOOGLE_API_KEY: ""
+  GOOGLE_CLIENT_SECRET: ""
+  JWT_EXPIRY_TIME: "604800"
+  JWT_SECRET: change-me-to-something-secure
+  MAIL_FROM_EMAIL: noreply@rxresu.me
+  MAIL_FROM_NAME: Reactive Resume
+  MAIL_HOST: ""
+  MAIL_PASSWORD: ""
+  MAIL_PORT: ""
+  MAIL_USERNAME: ""
+  PDF_DELETION_TIME: ""
+  POSTGRES_DB: postgres
+  POSTGRES_HOST: rxresume-db
+  POSTGRES_PASSWORD: postgres
+  POSTGRES_PORT: "5432"
+  POSTGRES_SSL_CERT: ""
+  POSTGRES_USER: postgres
+  PUBLIC_GOOGLE_CLIENT_ID: ""
+  PUBLIC_SERVER_URL: https://rxserver.pazon.xyz
+  PUBLIC_URL: https://rxclient.pazon.xyz
+  SECRET_KEY: change-me-to-something-secure
+  STORAGE_ACCESS_KEY: ""
+  STORAGE_BUCKET: ""
+  STORAGE_ENDPOINT: ""
+  STORAGE_REGION: ""
+  STORAGE_SECRET_KEY: ""
+  STORAGE_URL_PREFIX: ""
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: rxresume-server-cm

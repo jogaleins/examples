@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: rxresume-client
+  name: rxresume-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rxresume-client
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: rxresume-client
+    spec:
+      containers:
+      - image: amruthpillai/reactive-resume:client-latest
+        name: rxresume-client
+        envFrom:
+        - configMapRef:
+            name: rxresume-client-cm
+        ports:
+        - containerPort: 3000
+        
+
+
+
