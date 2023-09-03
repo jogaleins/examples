@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ntfy
+  name: ntfy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ntfy
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: ntfy
+    spec:
+      containers:
+      - env:
+        - name: TZ
+          value: UTC
+        command:
+          - /usr/bin/ntfy 
+          - serve
+        image: binwiederhier/ntfy:v2.7.0
+        name: ntfy
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: /var/cache/ntfy
+          name: ntfy-vol
+          subPath: data/1
+        - mountPath: /etc/ntfy
+          name: ntfy-vol
+          subPath: data/2
+        - mountPath: /etc/ntfy/server.yml
+          subPath: server.yml
+          name: config-volume
+      volumes:
+      - name: ntfy-vol
+        persistentVolumeClaim:
+          claimName: ntfy
+      - name: config-volume
+        configMap:  # uses configmap generator to parse server.yml to configmap
+          name: ntfy
