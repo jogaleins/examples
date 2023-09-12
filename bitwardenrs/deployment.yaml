@@ -21,7 +21,7 @@ spec:
           value: "true"
         - name: SIGNUPS_ALLOWED
           value: "true"
-        image: vaultwarden/server:latest
+        image: vaultwarden/server:1.29.2
         imagePullPolicy: Always
         name: server
         ports:
