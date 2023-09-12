@@ -1,0 +1,79 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: unbound
+spec:
+  ports:
+  - name: tcpport
+    port: 5335
+    protocol: TCP
+    targetPort: 53
+  - name: udpport
+    port: 5335
+    protocol: UDP
+    targetPort: 53
+  selector:
+    app: unbound
+  sessionAffinity: None
+  type: ClusterIP
+
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: pihole
+  name: pihole-dns-tcp
+spec:
+  externalTrafficPolicy: Local
+  ports:
+  - name: dns
+    nodePort: 30363
+    port: 53
+    protocol: TCP
+    targetPort: dns
+  selector:
+    app: pihole
+  type: NodePort
+
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: pihole
+  name: pihole-dns-udp
+spec:
+  externalTrafficPolicy: Local
+  healthCheckNodePort: 31463
+  ports:
+  - name: dns-udp
+    nodePort: 32067
+    port: 53
+    protocol: UDP
+    targetPort: dns-udp
+  selector:
+    app: pihole
+  sessionAffinity: None
+  type: LoadBalancer
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: pihole
+  name: pihole-web
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: http
+  - name: https
+    port: 443
+    protocol: TCP
+    targetPort: https
+  selector:
+    app: pihole
+  type: ClusterIP

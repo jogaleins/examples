@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: pihole
+spec:
+  rules:
+  - host: pihole.pazon.xyz
+    http:
+      paths:
+      - backend:
+          service:
+            name: pihole-web
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
