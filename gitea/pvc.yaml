@@ -9,6 +9,4 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  storageClassName: longhorn-static
-  volumeMode: Filesystem
-  volumeName: gitea
+  storageClassName: longhorn
