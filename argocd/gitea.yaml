@@ -1,2 +1,257 @@
-NAME    SYNC STATUS   HEALTH STATUS
-gitea   Synced        Healthy
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: "2025-04-26T08:37:48Z"
+  generation: 15
+  managedFields:
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        .: {}
+        f:destination:
+          .: {}
+          f:namespace: {}
+          f:server: {}
+        f:project: {}
+        f:source:
+          .: {}
+          f:directory:
+            .: {}
+            f:include: {}
+            f:jsonnet: {}
+            f:recurse: {}
+          f:path: {}
+          f:repoURL: {}
+          f:targetRevision: {}
+        f:syncPolicy:
+          .: {}
+          f:automated:
+            .: {}
+            f:enabled: {}
+      f:status:
+        .: {}
+        f:health: {}
+        f:sourceHydrator: {}
+        f:summary: {}
+        f:sync:
+          .: {}
+          f:comparedTo:
+            .: {}
+            f:destination: {}
+            f:source: {}
+    manager: argocd-server
+    operation: Update
+    time: "2025-04-26T08:37:48Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:controllerNamespace: {}
+        f:health:
+          f:lastTransitionTime: {}
+          f:status: {}
+        f:history: {}
+        f:operationState:
+          .: {}
+          f:finishedAt: {}
+          f:message: {}
+          f:operation:
+            .: {}
+            f:initiatedBy:
+              .: {}
+              f:automated: {}
+            f:retry:
+              .: {}
+              f:limit: {}
+            f:sync:
+              .: {}
+              f:revision: {}
+          f:phase: {}
+          f:startedAt: {}
+          f:syncResult:
+            .: {}
+            f:resources: {}
+            f:revision: {}
+            f:source:
+              .: {}
+              f:directory:
+                .: {}
+                f:include: {}
+                f:jsonnet: {}
+                f:recurse: {}
+              f:path: {}
+              f:repoURL: {}
+              f:targetRevision: {}
+        f:reconciledAt: {}
+        f:resourceHealthSource: {}
+        f:resources: {}
+        f:sourceType: {}
+        f:summary:
+          f:externalURLs: {}
+          f:images: {}
+        f:sync:
+          f:comparedTo:
+            f:destination:
+              f:namespace: {}
+              f:server: {}
+            f:source:
+              f:directory:
+                .: {}
+                f:include: {}
+                f:jsonnet: {}
+                f:recurse: {}
+              f:path: {}
+              f:repoURL: {}
+              f:targetRevision: {}
+          f:revision: {}
+          f:status: {}
+    manager: argocd-application-controller
+    operation: Update
+    time: "2025-04-26T08:40:10Z"
+  name: gitea
+  namespace: argocd
+  resourceVersion: "1753051"
+  uid: e96ace1a-3656-4621-9229-3159ed3aa329
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    directory:
+      include: '*.yaml'
+      jsonnet: {}
+      recurse: true
+    path: gitea
+    repoURL: https://github.com/jogaleins/examples.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      enabled: true
+status:
+  controllerNamespace: argocd
+  health:
+    lastTransitionTime: "2025-04-26T08:39:12Z"
+    status: Healthy
+  history:
+  - deployStartedAt: "2025-04-26T08:37:49Z"
+    deployedAt: "2025-04-26T08:37:54Z"
+    id: 0
+    initiatedBy:
+      automated: true
+    revision: d32311926b465f179f11fc8e4c3f59037ad95d0c
+    source:
+      directory:
+        include: '*.yaml'
+        jsonnet: {}
+        recurse: true
+      path: gitea
+      repoURL: https://github.com/jogaleins/examples.git
+      targetRevision: HEAD
+  operationState:
+    finishedAt: "2025-04-26T08:37:54Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        automated: true
+      retry:
+        limit: 5
+      sync:
+        revision: d32311926b465f179f11fc8e4c3f59037ad95d0c
+    phase: Succeeded
+    startedAt: "2025-04-26T08:37:49Z"
+    syncResult:
+      resources:
+      - group: ""
+        hookPhase: Running
+        kind: PersistentVolumeClaim
+        message: persistentvolumeclaim/gitea created
+        name: gitea
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/gitea created
+        name: gitea
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/gitea created
+        name: gitea
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: networking.k8s.io
+        hookPhase: Running
+        kind: Ingress
+        message: ingress.networking.k8s.io/gitea-ing created
+        name: gitea-ing
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      revision: d32311926b465f179f11fc8e4c3f59037ad95d0c
+      source:
+        directory:
+          include: '*.yaml'
+          jsonnet: {}
+          recurse: true
+        path: gitea
+        repoURL: https://github.com/jogaleins/examples.git
+        targetRevision: HEAD
+  reconciledAt: "2025-04-26T08:40:10Z"
+  resourceHealthSource: appTree
+  resources:
+  - kind: PersistentVolumeClaim
+    name: gitea
+    namespace: default
+    status: Synced
+    version: v1
+  - kind: Service
+    name: gitea
+    namespace: default
+    status: Synced
+    version: v1
+  - group: apps
+    kind: Deployment
+    name: gitea
+    namespace: default
+    status: Synced
+    version: v1
+  - group: networking.k8s.io
+    kind: Ingress
+    name: gitea-ing
+    namespace: default
+    status: Synced
+    version: v1
+  sourceHydrator: {}
+  sourceType: Directory
+  summary:
+    externalURLs:
+    - http://gitea.adrianpazon.com/
+    images:
+    - gitea/gitea:1.19
+  sync:
+    comparedTo:
+      destination:
+        namespace: default
+        server: https://kubernetes.default.svc
+      source:
+        directory:
+          include: '*.yaml'
+          jsonnet: {}
+          recurse: true
+        path: gitea
+        repoURL: https://github.com/jogaleins/examples.git
+        targetRevision: HEAD
+    revision: d32311926b465f179f11fc8e4c3f59037ad95d0c
+    status: Synced
