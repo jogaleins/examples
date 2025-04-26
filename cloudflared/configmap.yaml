@@ -1,7 +1,8 @@
 apiVersion: v1
 data:
   config.yaml: |
-    tunnel: b3da3f77-ac68-43d3-bbc2-da1045833829
+    tunnel: 5e2fbd8d-6ce6-42a8-8c0c-c20ad9a10401
+    
     credentials-file: /etc/cloudflared/creds/credentials.json
 
     metrics: 0.0.0.0:2000
@@ -9,7 +10,7 @@ data:
     no-autoupdate: true
 
     ingress:
-      - hostname: '*.pazon.xyz'
+      - hostname: '*.adrianpazon.com'
         service: http://192.168.2.215
         originRequest:
           noTLSVerify: true
