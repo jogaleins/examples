@@ -8,7 +8,7 @@ metadata:
   namespace: default
 spec:
   rules:
-  - host: warden.pazon.xyz
+  - host: warden.adrianpazon.com
     http:
       paths:
       - backend:
