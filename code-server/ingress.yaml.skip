@@ -5,16 +5,7 @@ metadata:
   namespace: default
 spec:
   rules:
-  - host: code.lan.pazon.xyz
-    http:
-      paths:
-      - backend:
-          service:
-            name: code-server
-            port:
-              number: 8443
-        pathType: ImplementationSpecific
-  - host: code.pazon.xyz
+  - host: code.adrianpazon.com
     http:
       paths:
       - backend:
