@@ -37,7 +37,7 @@ spec:
           value: "true"
         volumeMounts:
         - name: guacamole-client-vol
-          mountPath: /drive
+          mountPath: /config
       volumes:
       - name: guacamole-client-vol
         persistentVolumeClaim:
